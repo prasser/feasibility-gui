@@ -1,6 +1,83 @@
 # Changelog
 
-## v6.0.1 (2024-11-21)
+## v6.0.8 (2025-03-11)
+
+### Bug Fixes
+* Increment the details button counter after the modal is closed ([#357](https://github.com/medizininformatik-initiative/feasibility-gui/issues/357))
+* Split URL list of data selection references based on URL length ([#353](https://github.com/medizininformatik-initiative/feasibility-gui/issues/353))
+* UI now continues polling results even after receiving an error from `summary-result`. If the final response contains an error, it will be displayed, while intermediate errors are ignored to ensure uninterrupted polling ([#349](https://github.com/medizininformatik-initiative/feasibility-gui/issues/349))
+
+
+
+## v6.0.7 (2025-02-27)
+
+### Bug Fixes
+* Fixed index increment issue with parentheses ([#313](https://github.com/medizininformatik-initiative/feasibility-gui/issues/313))
+* Reduced container height ([#343](https://github.com/medizininformatik-initiative/feasibility-gui/issues/343))
+* Corrected consent subscription ([#344](https://github.com/medizininformatik-initiative/feasibility-gui/issues/344))
+
+### Features
+* Defined and applied interfaces ([#333](https://github.com/medizininformatik-initiative/feasibility-gui/issues/333))
+* Refactored CriterionValidationService into smaller services ([#332](https://github.com/medizininformatik-initiative/feasibility-gui/issues/332))
+* Merged two criterion creation services into one ([#326](https://github.com/medizininformatik-initiative/feasibility-gui/issues/326))
+* Added translation for consent text ([#263](https://github.com/medizininformatik-initiative/feasibility-gui/issues/263))
+
+
+
+## v6.0.6 (2025-02-18)
+
+### Bug Fixes
+* fixed error message for missing consent validation
+
+### Changes
+* Refactored CreateCriterionService ([#326](https://github.com/medizininformatik-initiative/feasibility-gui/issues/326))
+
+
+
+## v6.0.5 (2025-02-17)
+
+### Bug Fixes
+* fixed wrong key for valueDefinition mapping
+
+
+
+## v6.0.4 (2025-02-14)
+
+### Bug Fixes
+* fixed wrong key for attributeDefinition mapping
+
+### Changes
+* Refactored criterion hash service
+
+
+
+## v6.0.4-alpha (2025-02-11)
+
+### Bug Fixes
+* Removed hashes in result details modal and replaced them with DIZ n-1 ([#313](https://github.com/medizininformatik-initiative/feasibility-gui/issues/313)).
+* Fixed error message display and refactored snackbar service ([#310](https://github.com/medizininformatik-initiative/feasibility-gui/issues/310)).
+* Resolved inconsistency between summary and detail results ([#303](https://github.com/medizininformatik-initiative/feasibility-gui/issues/303), [#304](https://github.com/medizininformatik-initiative/feasibility-gui/issues/304)).
+
+### Changes
+* Refactored feasibility query result service into smaller services ([#329](https://github.com/medizininformatik-initiative/feasibility-gui/issues/329)).
+* Updated result details only once per feasibility query ([#317](https://github.com/medizininformatik-initiative/feasibility-gui/issues/317)).
+* Refactored backend service ([#312](https://github.com/medizininformatik-initiative/feasibility-gui/issues/312)).
+
+### Features
+* Added UI support for attribute translations and main value display ([#314](https://github.com/medizininformatik-initiative/feasibility-gui/issues/314), [#311](https://github.com/medizininformatik-initiative/feasibility-gui/issues/311), [#315](https://github.com/medizininformatik-initiative/feasibility-gui/issues/315)).
+* Displayed warning message when the start date is earlier than the end date ([#308](https://github.com/medizininformatik-initiative/feasibility-gui/issues/308)).
+
+
+
+
+## v6.0.3 (2024-12-09)
+
+### Bugfix
+
+* Update query result after each polling intervall ([#303](https://github.com/medizininformatik-initiative/feasibility-gui/issues/304))
+
+
+## v6.0.2 (2024-11-21)
 
 ### Bugfix
 

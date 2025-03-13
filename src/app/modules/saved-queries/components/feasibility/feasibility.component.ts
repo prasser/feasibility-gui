@@ -56,7 +56,8 @@ export class FeasibilityComponent implements OnInit, OnDestroy {
         this.SQToFQTranslator.translate(savedFeasibilityQuery.content).subscribe(
           (feasibilityQuery) => {
             const queryResult = new QueryResult(
-              feasibilityQuery.getID(),
+              false,
+              feasibilityQuery.getId(),
               savedFeasibilityQuery.totalNumberOfPatients,
               uuidv4()
             );
@@ -72,7 +73,7 @@ export class FeasibilityComponent implements OnInit, OnDestroy {
             }
             this.feasibilityQueryService.setFeasibilityQueryByID(
               feasibilityQuery,
-              feasibilityQuery.getID(),
+              feasibilityQuery.getId(),
               true
             );
           }

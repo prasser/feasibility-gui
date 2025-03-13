@@ -2,9 +2,10 @@ import { AbstractQuantityFilter } from './Quantity/AbstractQuantityFilter';
 import { ConceptFilter } from './Concept/ConceptFilter';
 import { ReferenceFilter } from './Concept/ReferenceFilter';
 import { FilterTypes } from 'src/app/model/Utilities/FilterTypes';
+import { Display } from 'src/app/model/DataSelection/Profile/Display';
 
 export abstract class AbstractAttributeFilters {
-  private display: string;
+  private display: Display;
   private concept?: ConceptFilter;
   private quantity?: AbstractQuantityFilter;
   private reference?: ReferenceFilter;
@@ -22,7 +23,7 @@ export abstract class AbstractAttributeFilters {
    * @param optional - Whether the filter is optional or not. Default is false.
    */
   constructor(
-    display: string,
+    display: Display,
     filterType: FilterTypes,
     concept?: ConceptFilter,
     quantity?: AbstractQuantityFilter,
@@ -42,7 +43,7 @@ export abstract class AbstractAttributeFilters {
    *
    * @returns The display name.
    */
-  getDisplay(): string {
+  getDisplay(): Display {
     return this.display;
   }
 
@@ -51,7 +52,7 @@ export abstract class AbstractAttributeFilters {
    *
    * @param display - The new display name.
    */
-  setDisplay(display: string): void {
+  setDisplay(display: Display): void {
     this.display = display;
   }
 

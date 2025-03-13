@@ -2,7 +2,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ProfileFields } from 'src/app/model/DataSelection/Profile/Fields/ProfileFields';
 import { Translation } from 'src/app/model/DataSelection/Profile/Translation';
-import { DisplayData } from 'src/app/model/DataSelection/Profile/DisplayData';
+import { Display } from 'src/app/model/DataSelection/Profile/Display';
 
 @Injectable({
   providedIn: 'root',
@@ -28,22 +28,37 @@ export class SelectedDataSelectionProfileFieldsService {
     return new ProfileFields(
       profileField.getId(),
       this.instantiateDisplayData(profileField.getDisplay()),
-      this.instantiateDisplayData(profileField.getDescription()),
+      this.instantiateDisplayDataForDescription(profileField.getDescription()),
       children,
       profileField.getIsSelected(),
       profileField.getIsRequired(),
       profileField.getRecommended(),
       profileField.getMustHave(),
-      profileField.getReferencedProfiles()
+      profileField.getReferencedProfileUrls()
     );
   }
 
-  private instantiateDisplayData(displayData: DisplayData): DisplayData {
-    return new DisplayData(
-      displayData.getOriginal(),
+  private instantiateDisplayDataForDescription(displayData: Display): Display {
+    return new Display(
       displayData
         .getTranslations()
-        .map((translation) => new Translation(translation.getLanguage(), translation.getValues()))
+        .map(
+          (translation) => new Translation(translation.getLanguage(), '', translation.getValues())
+        ),
+      '',
+      displayData.getOriginals()
+    );
+  }
+
+  private instantiateDisplayData(displayData: Display): Display {
+    return new Display(
+      displayData
+        .getTranslations()
+        .map(
+          (translation) =>
+            new Translation(translation.getLanguage(), translation.getValue(), undefined)
+        ),
+      displayData.getOriginal()
     );
   }
 

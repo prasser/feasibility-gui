@@ -1,15 +1,19 @@
 import { AttributeDefinitions } from 'src/app/model/Utilities/AttributeDefinition.ts/AttributeDefinitions';
 import { AttributeDefinitionsResultMapper } from './Mapper/AttributeDefinitionsResultMapper';
-import { CriteriaProfileData } from 'src/app/model/FeasibilityQuery/CriteriaProfileData';
+import { CriteriaProfile } from 'src/app/model/FeasibilityQuery/CriteriaProfileData';
+import { DisplayDataFactoryService } from '../Factory/DisplayDataFactory.service';
 import { finalize, mergeMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { SearchTermListEntry } from 'src/app/shared/models/ListEntries/SearchTermListEntry';
 import { SelectedTableItemsService } from '../ElasticSearch/SearchTermListItemService.service';
+import { TerminologyApiService } from '../Backend/Api/TerminologyApi.service';
 import { TerminologyCode } from 'src/app/model/Terminology/TerminologyCode';
 import { ValueDefinition } from '../../model/Utilities/AttributeDefinition.ts/ValueDefnition';
 import { ValueDefinitionsResultMapper } from './Mapper/ValueDefinitionsResultMapper';
-import { BackendService } from 'src/app/modules/feasibility-query/service/backend.service';
+import { TerminologyCodeData } from 'src/app/model/Interface/TerminologyCodeData ';
+import { CriteriaProfileData } from 'src/app/model/Interface/CriteriaProfileData';
+import { UiProfileData } from 'src/app/model/Interface/UiProfileData';
 
 @Injectable({
   providedIn: 'root',
@@ -18,14 +22,15 @@ export class CriteriaProfileDataService {
   ids: Set<string> = new Set<string>();
 
   constructor(
-    private backend: BackendService,
-    private listItemService: SelectedTableItemsService<SearchTermListEntry> //private snackbar: SnackbarService
+    private terminologyApiService: TerminologyApiService,
+    private listItemService: SelectedTableItemsService<SearchTermListEntry>,
+    private displayDataFactoryService: DisplayDataFactoryService
   ) {}
 
   /**
    * Translate selected list items to CriteriaProfileData objects and return them as an Observable.
    */
-  public translateListItemsToCriterions(): Observable<CriteriaProfileData[]> {
+  public translateListItemsToCriterions(): Observable<CriteriaProfile[]> {
     return this.getCriteriaProfileData(this.listItemService.getSelectedIds());
   }
 
@@ -35,11 +40,11 @@ export class CriteriaProfileDataService {
    * @param ids The array of selected IDs.
    * @returns Observable<CriteriaProfileData[]> The observable of criteria profile data array.
    */
-  public getCriteriaProfileData(ids: Array<string>): Observable<CriteriaProfileData[]> {
-    return this.backend.getCriteriaProfileData(ids).pipe(
-      mergeMap((responses: any[]) => {
+  public getCriteriaProfileData(ids: Array<string>): Observable<CriteriaProfile[]> {
+    return this.terminologyApiService.getCriteriaProfileData(ids).pipe(
+      mergeMap((responses: CriteriaProfileData[]) => {
         const criteriaProfileDataArray = responses
-          .map((response) => this.createCriteriaProfileData(response))
+          .map((response: CriteriaProfileData) => this.createCriteriaProfileData(response))
           .filter((data) => data !== undefined);
 
         return of(criteriaProfileDataArray);
@@ -51,15 +56,17 @@ export class CriteriaProfileDataService {
     );
   }
 
-  private createCriteriaProfileData(response: any): CriteriaProfileData | undefined {
+  private createCriteriaProfileData(response: CriteriaProfileData): CriteriaProfile | undefined {
     try {
       if (response.uiProfile) {
         const context = this.mapTerminologyCode(response.context);
         const termCodes = response.termCodes.map(this.mapTerminologyCode);
         const id = response.id;
+        const display = response.display;
 
-        return new CriteriaProfileData(
+        return new CriteriaProfile(
           id,
+          this.displayDataFactoryService.createDisplayData(display),
           response.uiProfile.timeRestrictionAllowed,
           this.mapAttributeDefinitions(response.uiProfile),
           context,
@@ -76,7 +83,7 @@ export class CriteriaProfileDataService {
     }
   }
 
-  private mapAttributeDefinitions(uiProfile: any): AttributeDefinitions[] {
+  private mapAttributeDefinitions(uiProfile: UiProfileData): AttributeDefinitions[] {
     const attributeDefinitionMapper = new AttributeDefinitionsResultMapper();
     return attributeDefinitionMapper.mapAttributeDefinitions(uiProfile.attributeDefinitions);
   }

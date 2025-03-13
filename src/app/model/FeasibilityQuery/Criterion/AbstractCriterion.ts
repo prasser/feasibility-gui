@@ -1,6 +1,7 @@
 import { AbstractTimeRestriction } from './TimeRestriction/AbstractTimeRestriction';
 import { AttributeFilter } from './AttributeFilter/AttributeFilter';
 import { CritGroupPosition } from '../CritGroupPosition';
+import { Display } from '../../DataSelection/Profile/Display';
 import { TerminologyCode } from '../../Terminology/TerminologyCode';
 import { ValueFilter } from './AttributeFilter/ValueFilter';
 
@@ -11,7 +12,7 @@ export abstract class AbstractCriterion {
   private attributeFilters?: Array<AttributeFilter> = [];
   private context?: TerminologyCode;
   private criterionHash?: string;
-  private display?: string;
+  private display: Display;
   private isInvalid?: boolean = false;
   private isReference = false;
   private position?: CritGroupPosition;
@@ -42,7 +43,7 @@ export abstract class AbstractCriterion {
     attributeFilters?: Array<AttributeFilter>,
     context?: TerminologyCode,
     criterionHash?: string,
-    display?: string,
+    display?: Display,
     isInvalid?: boolean,
     isRequiredFilterSet?: boolean,
     position?: CritGroupPosition,
@@ -150,7 +151,7 @@ export abstract class AbstractCriterion {
    *
    * @returns Display string for the criterion.
    */
-  public getDisplay(): string | undefined {
+  public getDisplay(): Display {
     return this.display;
   }
 
@@ -159,7 +160,7 @@ export abstract class AbstractCriterion {
    *
    * @param display - Display string for the criterion.
    */
-  public setDisplay(display: string): void {
+  public setDisplay(display: Display): void {
     this.display = display;
   }
 

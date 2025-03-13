@@ -1,6 +1,6 @@
 import { AttributeFilter } from 'src/app/model/FeasibilityQuery/Criterion/AttributeFilter/AttributeFilter';
-import { Component, Inject, OnInit } from '@angular/core';
-import { CreateReferenceCriterionService } from 'src/app/service/Criterion/Builder/Create/CreateReferenceCriterion.service';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { CreateCriterionService } from 'src/app/service/Criterion/Builder/Create/CreateCriterionService';
 import { Criterion } from 'src/app/model/FeasibilityQuery/Criterion/Criterion';
 import { CriterionBuilder } from 'src/app/model/FeasibilityQuery/Criterion/CriterionBuilder';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -8,6 +8,7 @@ import { ReferenceCriterion } from 'src/app/model/FeasibilityQuery/Criterion/Ref
 import { TerminologyCode } from 'src/app/model/Terminology/TerminologyCode';
 import { ReferenceCriterionProviderService } from 'src/app/service/Provider/ReferenceCriterionProvider.service';
 import { CriterionValidationService } from '../../../../../service/Criterion/CriterionValidation.service';
+import { Display } from 'src/app/model/DataSelection/Profile/Display';
 @Component({
   selector: 'num-edit-reference-criteria',
   templateUrl: './edit-reference-criteria-modal.component.html',
@@ -23,10 +24,14 @@ export class EditReferenceCriteriaModalComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: EditReferenceCriteriaModalComponent,
     private dialogRef: MatDialogRef<EditReferenceCriteriaModalComponent, Criterion>,
-    private createReferenceService: CreateReferenceCriterionService,
+    private createCriterionService: CreateCriterionService,
     private referenceCriterionProvider: ReferenceCriterionProviderService,
     private criterionValidationService: CriterionValidationService
   ) {}
+
+  @HostListener('window:keyup.esc') onKeyUp() {
+    this.dialogRef.close();
+  }
 
   ngOnInit() {
     this.criterion = this.data.criterion;
@@ -38,8 +43,8 @@ export class EditReferenceCriteriaModalComponent implements OnInit {
   }
 
   public saveReferenceCriterion() {
-    this.createReferenceService
-      .fetchReferenceCriterions(this.ids, this.criterion.getId())
+    this.createCriterionService
+      .createReferenceCriteriaFromHashes(this.ids, this.criterion.getId())
       .subscribe((referenceCriteria: ReferenceCriterion[]) => {
         referenceCriteria.forEach((referenceCriterion) =>
           this.referenceCriterionProvider.setReferenceCriterionByUID(
@@ -68,7 +73,7 @@ export class EditReferenceCriteriaModalComponent implements OnInit {
     isReference: boolean
     context: TerminologyCode
     criterionHash: string
-    display: string
+    display: Display
     isInvalid: boolean
     isRequiredFilterSet: boolean
     uniqueID: string
@@ -76,7 +81,7 @@ export class EditReferenceCriteriaModalComponent implements OnInit {
   } {
     const context = criterion.getContext();
     const termCodes = criterion.getTermCodes();
-    const display = criterion.getTermCodes()[0].getDisplay();
+    const display = criterion.getDisplay();
     const criterionHash = this.criterion.getCriterionHash();
     const isRequiredFilterSet = this.criterionValidationService.setIsFilterRequired(this.criterion);
     return {

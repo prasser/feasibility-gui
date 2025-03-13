@@ -3,18 +3,18 @@ import { DataSelectionProfileTreeNode } from 'src/app/model/DataSelection/Profil
 import { DataSelectionProfileTreeRoot } from 'src/app/model/DataSelection/ProfileTree/DataSelectionProfileTreeRoot';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { DisplayData } from 'src/app/model/DataSelection/Profile/DisplayData';
+import { Display } from 'src/app/model/DataSelection/Profile/Display';
 import { Translation } from 'src/app/model/DataSelection/Profile/Translation';
-import { BackendService } from 'src/app/modules/feasibility-query/service/backend.service';
+import { DataSelectionApiService } from '../Backend/Api/DataSelectionApi.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataSelectionProfileTreeService {
-  constructor(private backendservice: BackendService) {}
+  constructor(private dataSelectionApiService: DataSelectionApiService) {}
 
   public fetchProfileTree(profileTreeData?: any): Observable<DataSelectionProfileTree> {
-    return this.backendservice.getDataSelectionProfileTree().pipe(
+    return this.dataSelectionApiService.getDataSelectionProfileTree().pipe(
       map((response) => {
         const rootNode = this.createNode(response.children);
         const treeRoot = this.createTreeRoot(profileTreeData, rootNode);
@@ -38,8 +38,8 @@ export class DataSelectionProfileTreeService {
           new DataSelectionProfileTreeNode(
             child.id,
             child.name,
-            this.instantiateDisplayData(child.display),
-            this.instantiateDisplayData(child.fields),
+            this.instantiateDisplayDataForDisplay(child.display),
+            this.instantiateDisplayDataForFields(child.fields),
             child.module,
             child.url,
             child.leaf,
@@ -49,16 +49,35 @@ export class DataSelectionProfileTreeService {
         );
       });
     }
+
     return result;
   }
 
-  private instantiateDisplayData(data: any) {
-    return new DisplayData(
-      this.checkValuesForTypeString(data.original),
-      data.translations?.map(
+  public instantiateDisplayDataForFields(displayData: any): Display {
+    return new Display(
+      displayData.translations.map(
         (translation) =>
-          new Translation(translation.language, this.checkValuesForTypeString(translation.value))
-      )
+          new Translation(
+            translation.language,
+            undefined,
+            this.checkValuesForTypeString(translation.value)
+          )
+      ),
+      undefined,
+      this.checkValuesForTypeString(displayData.original)
+    );
+  }
+
+  public instantiateDisplayDataForDisplay(displayData: any): Display {
+    return new Display(
+      displayData.translations.map(
+        (translation) =>
+          new Translation(
+            translation.language,
+            translation.value.length > 0 ? translation.value : undefined
+          )
+      ),
+      displayData.original
     );
   }
 

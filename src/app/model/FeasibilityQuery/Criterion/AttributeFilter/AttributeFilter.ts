@@ -4,6 +4,7 @@ import { ConceptFilter } from './Concept/ConceptFilter';
 import { AbstractQuantityFilter } from './Quantity/AbstractQuantityFilter';
 import { ReferenceFilter } from './Concept/ReferenceFilter';
 import { FilterTypes } from 'src/app/model/Utilities/FilterTypes';
+import { Display } from 'src/app/model/DataSelection/Profile/Display';
 
 export class AttributeFilter extends AbstractAttributeFilters {
   private attributeCode: TerminologyCode;
@@ -19,7 +20,7 @@ export class AttributeFilter extends AbstractAttributeFilters {
    * @param optional - Whether the filter is optional or not. Default is false.
    */
   constructor(
-    display: string,
+    display: Display,
     filter: FilterTypes,
     attributeCode: TerminologyCode,
     concept?: ConceptFilter,

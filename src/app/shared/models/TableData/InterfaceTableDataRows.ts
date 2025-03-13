@@ -2,7 +2,7 @@ import { InterfaceListEntry } from 'src/app/shared/models/ListEntries/InterfaceL
 
 export interface InterfaceTableDataRow {
   id: string
-  data: string[]
+  data: any[]
   hasCheckbox?: boolean
   isCheckboxSelected?: boolean
   isClickable?: boolean

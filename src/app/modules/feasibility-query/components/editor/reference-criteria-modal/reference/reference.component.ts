@@ -8,9 +8,11 @@ import { Observable, Subscription } from 'rxjs';
 import { TableData } from 'src/app/shared/models/TableData/InterfaceTableData';
 import { TerminologyCode } from 'src/app/model/Terminology/TerminologyCode';
 import { SelectedTableItemsService } from 'src/app/service/ElasticSearch/SearchTermListItemService.service';
+import { Display } from 'src/app/model/DataSelection/Profile/Display';
 
 interface selectedItem {
   id: string
+  display: Display
   termCode: TerminologyCode
 }
 @Component({
@@ -120,6 +122,7 @@ export class ReferenceComponent implements OnInit, OnDestroy {
         items.forEach((item) => {
           this.arrayOfSelectedReferences.push({
             id: item.getId(),
+            display: item.getDisplay(),
             termCode: item.getTerminologyCode(),
           });
         });

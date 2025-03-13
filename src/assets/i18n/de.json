@@ -14,14 +14,14 @@
       "REQUIRED_FILTER": "Bitte einen Filter setzen"
     },
     "ACTIONBAR": {
-        "SELECTED_CRITERIA": {
-          "SINGULAR": "Sie haben {{amount}} Kriterium ausgewählt",
-          "PLURAL": "Sie haben {{amount}} Kriterien ausgewählt"
+      "SELECTED_CRITERIA": {
+        "SINGULAR": "Sie haben {{amount}} Kriterium ausgewählt",
+        "PLURAL": "Sie haben {{amount}} Kriterien ausgewählt"
       },
-          "ADDED_CRITERIA":{
-            "SINGULAR": "Sie haben {{amount}} Kriterium zur Kohortenselektion hinzugefügt",
-            "PLURAL": "Sie haben {{amount}} Kriterien zur Kohortenselektion hinzugefügt"
-          }
+      "ADDED_CRITERIA":{
+         "SINGULAR": "Sie haben {{amount}} Kriterium zur Kohortenselektion hinzugefügt",
+         "PLURAL": "Sie haben {{amount}} Kriterien zur Kohortenselektion hinzugefügt"
+       }
     },
     "FILTER": {
       "CONTEXT": "Kontext",
@@ -40,7 +40,7 @@
       "ADD": "Zur Kohortenselektion hinzufügen",
       "OPTIONS": "Optionen"
     },
-    "LIST_ITEM_DETAILS":{
+    "LIST_ITEM_DETAILS": {
       "PARENTS": "Elternelement",
       "CHILDREN": "Kindelement"
     },
@@ -52,12 +52,30 @@
     }
   },
   "SHAREDFILTER": {
-    "EMPTY":"Entschuldigung, wir konnten keine Ergebnisse finden für ",
+    "EMPTY": "Entschuldigung, wir konnten keine Ergebnisse finden für ",
     "FILTER_SELECTION": "Ausgewählte Elemente",
     "BUTTON": {
       "ADD": "Hinzufügen",
       "REMOVE": "Entfernen"
     }
+  },
+  "CONSENT": {
+    "yes-yes-yes-yes": "Verteilte, EU-DSGVO konforme Analyse, mit Krankenkassendaten, und mit Rekontaktierung",
+    "yes-yes-yes-no": "Verteilte, EU-DSGVO konforme Analyse, mit Krankenkassendaten, und ohne Rekontaktierung",
+    "yes-yes-no-yes": "Verteilte, EU-DSGVO konforme Analyse, ohne Krankenkassendaten, und mit Rekontaktierung",
+    "yes-yes-no-no": "Verteilte, EU-DSGVO konforme Analyse, ohne Krankenkassendaten, und ohne Rekontaktierung",
+    "yes-no-yes-yes": "Verteilte, nicht EU-DSGVO konforme Analyse, mit Krankenkassendaten, und mit Rekontaktierung",
+    "yes-no-yes-no": "Verteilte, nicht EU-DSGVO konforme Analyse, mit Krankenkassendaten, und ohne Rekontaktierung",
+    "yes-no-no-yes": "Verteilte, nicht EU-DSGVO konforme Analyse, ohne Krankenkassendaten, und mit Rekontaktierung",
+    "yes-no-no-no": "Verteilte, nicht EU-DSGVO konforme Analyse, ohne Krankenkassendaten, und ohne Rekontaktierung",
+    "no-yes-yes-yes": "Zentrale, EU-DSGVO konforme Analyse, mit Krankenkassendaten, und mit Rekontaktierung",
+    "no-yes-yes-no": "Zentrale, EU-DSGVO konforme Analyse, mit Krankenkassendaten, und ohne Rekontaktierung",
+    "no-yes-no-yes": "Zentrale, EU-DSGVO konforme Analyse, ohne Krankenkassendaten, und mit Rekontaktierung",
+    "no-yes-no-no": "Zentrale, EU-DSGVO konforme Analyse, ohne Krankenkassendaten, und ohne Rekontaktierung",
+    "no-no-yes-yes": "Zentrale, nicht EU-DSGVO konforme Analyse, mit Krankenkassendaten, und mit Rekontaktierung",
+    "no-no-yes-no": "Zentrale, nicht EU-DSGVO konforme Analyse, mit Krankenkassendaten, und ohne Rekontaktierung",
+    "no-no-no-yes": "Zentrale, nicht EU-DSGVO konforme Analyse, ohne Krankenkassendaten, und mit Rekontaktierung",
+    "no-no-no-no": "Zentrale, nicht EU-DSGVO konforme Analyse, ohne Krankenkassendaten, und ohne Rekontaktierung"
   },
   "DASHBOARD": {
     "HEADER": "Willkommen im Bereich „Daten und Bioproben finden“ des Forschungsdatenportals für Gesundheit",
@@ -68,14 +86,14 @@
     "PARAGRAPH3_3": " haben Sie die Möglichkeit, eine neue Suchabfrage auf Basis des ",
     "PARAGRAPH3_4": " zu formulieren und abzuschicken, um einen Überblick über die verfügbaren Datensätze zu erhalten.",
     "PARAGRAPH3_LINK": "Kerndatensatzes der MII",
-    "PARAGRAPH4_1":"Gespeicherte Abfragen oder gespeicherte Entwürfe können Sie über ",
-    "PARAGRAPH4_2":"Meine Abfragen",
+    "PARAGRAPH4_1": "Gespeicherte Abfragen oder gespeicherte Entwürfe können Sie über ",
+    "PARAGRAPH4_2": "Meine Abfragen",
     "PARAGRAPH4_3": " einsehen und weiter bearbeiten.",
     "PARAGRAPH5_1": "Sobald Ihnen alle relevanten Informationen für Ihr Forschungsvorhaben zur Verfügung stehen, können Sie über ",
     "PARAGRAPH5_2": "Antrag stellen",
     "PARAGRAPH5_3": " einen Antrag zur Datennutzung im Antragsportal des Forschungsdatenportals für Gesundheit stellen.",
-    "INFO":{
-      "TEXT": " Wir arbeiten gerade am Machbarkeitsportal, sodass es bei manchen Abfragen zu Verzögerungen und abweichenden Ergebnissen kommen kann."
+    "INFO": {
+      "TEXT": " Wir arbeiten gerade am Machbarkeitsportal, sodass es bei manchen abfragen zu Verzögerungen und abweichenden Ergebnissen kommen kann."
     },
     "DATAQUERY": {
       "HEADER": "Daten beantragen",
@@ -99,6 +117,8 @@
     }
   },
   "DATASELECTION": {
+    "REQUIRED": "Erforderlich",
+    "OPTIONAL": "Optional",
     "HEADER": "Merkmalselektion",
     "HEADER_INFO": "Für Ihre Forschungsfrage können Sie nun definieren welche Daten Sie von den Patientinnen und Patienten der Kohorte erhalten möchten. Die verfügbaren Daten sind durch Module des Kerndatensatzes (KDS) deutschlandweit standardisiert. Sie können Datenpunkte zusätzlich Filtern, wenn z.b. nur bestimmte Laborwerte von Interesse sind und Sie haben die Möglichkeit anzugeben, welche Datenpunkte zwingend erforderlich sind für Ihre Forschungsfrage.",
     "DATASELECTION": "Merkmalselektion",
@@ -109,7 +129,7 @@
       "REQUIRED": "erforderlich",
       "OPTIONAL": "optional"
     },
-    "FIELD_SELECTION":{
+    "FIELD_SELECTION": {
       "FIELD_SELECTION": "Ausgewählte Elemente",
       "HEADER": "Selektieren Sie Merkmale für ",
       "REQUIRED": "erforderlich"
@@ -138,7 +158,6 @@
       "REFERENCE": "nur wenn referenziert"
     },
     "INFOTEXT": "Bitte wählen Sie unten die Kriterien aus, die Sie erforschen möchten und laden Sie die Datendefinition herunter. Sie können die Datei dann als Teil Ihres Forschungsantrags im Forschungsantragsportal des FDPG hochladen. Diese Datei ist maschinenlesbar und darf nicht verändert werden.",
-    "REQUIRED":"Variable muss an allen Standorten vorliegen"
   },
   "DATAQUERY": {
     "COHORT": {
@@ -228,8 +247,6 @@
         "VIEW_STAGE": "Kohortenselektion anzeigen",
         "SEND_QUERY": "Machbarkeitsabfrage",
         "DATA_REQUEST": "Datendefinition"
-
-
       },
       "MESSAGE": {
         "ADDED_CRITERIA": "Sie haben {{number}} Kriterien zu Ihrer Kohortenselektion hinzugefügt"
@@ -288,7 +305,8 @@
         "BOTH": "zwischen {{ from }} und {{ to }}",
         "FROM": "nach {{ from }}",
         "TO": "vor {{ to }}",
-        "NONE": "keine zeitliche Einschränkung"
+        "NONE": "keine zeitliche Einschränkung",
+        "WARNING": "Das Anfangsdatum muss kleiner sein als das Enddatum"
       }
     },
     "OVERVIEW": {
@@ -348,7 +366,7 @@
         "AFTER_OR_AT": "nach oder am",
         "BETWEEN": "zwischen",
         "TITLE": "Zeitraum (optional)",
-        "NONE":"kein Filter"
+        "NONE": "kein Filter"
       }
     },
     "HINT": {
@@ -372,7 +390,7 @@
       },
       "SAVE_DIALOG": {
         "HEADER": "Anzahl der Patienten",
-        "HEADER_DESCRIPTION":"Die Anzahl an Patientinnen und Patienten, die die Kriterien Ihrer Kohorte erfüllen wird standortübergreifend ermittelt. Dieses Ergebnis ist nicht exakt."
+        "HEADER_DESCRIPTION": "Die Anzahl an Patientinnen und Patienten, die die Kriterien Ihrer Kohorte erfüllen wird standortübergreifend ermittelt. Dieses Ergebnis ist nicht exakt."
       },
       "HEADER_DESCRIPTION": "Die Anzahl an Patientinnen und Patienten, die die Kriterien Ihrer Kohorte erfüllen wird standortübergreifend ermittelt. Dieses Ergebnis ist nicht exakt.",
       "PATIENT_NUMBER": "Anzahl der Patienten",
@@ -417,8 +435,8 @@
       "DATA_SELECTION": "Datendefinition - Merkmalselektion"
     },
     "DATA_SELECTION": {
-    "SEARCH": "Merkmalselektion - Suche",
-    "EDITOR": "Merkmalselektion - Editor"
+      "SEARCH": "Merkmalselektion - Suche",
+      "EDITOR": "Merkmalselektion - Editor"
     },
     "FEASIBILITY_QUERY": {
       "SEARCH": "Machbarkeitsabfrage - Suche",
@@ -431,6 +449,7 @@
     "FEAS-10005"  :"Die Anzahl der Standorte, die geantwortet haben, ist zu klein -> Detailergebnis wird nicht angezeigt",
     "FEAS-10004"  :"Die Ergebnismenge ist zu klein -> Ergebnis wird nicht angezeigt",
     "FEAS-10002"  :"Sie haben zu viele Abfragen gestellt, bitte warten Sie und probieren Sie es erneut",
+    "FEAS-10003"  :"Sie haben zu viele Abfragen gestellt, bitte warten Sie und probieren Sie es erneut",
     "FEAS-10006"  :"Sie haben zu viele Kohorten gespeichert, bitte löschen Sie Kohortenselektionen, bevor Sie weitere speichern",
     "404"         :"Standort wurde nicht gefunden",
     "VAL-20001"   :"Die Kombination aus Kontext und Termcode(s) wurde nicht gefunden"
