@@ -120,7 +120,7 @@
     "REQUIRED": "Erforderlich",
     "OPTIONAL": "Optional",
     "HEADER": "Merkmalselektion",
-    "HEADER_INFO": "Für Ihre Forschungsfrage können Sie nun definieren welche Daten Sie von den Patientinnen und Patienten der Kohorte erhalten möchten. Die verfügbaren Daten sind durch Module des Kerndatensatzes (KDS) deutschlandweit standardisiert. Sie können Datenpunkte zusätzlich Filtern, wenn z.b. nur bestimmte Laborwerte von Interesse sind und Sie haben die Möglichkeit anzugeben, welche Datenpunkte zwingend erforderlich sind für Ihre Forschungsfrage.",
+    "HEADER_INFO": "Für Ihre Forschungsfrage können Sie nun definieren welche Daten Sie von den Patientinnen und Patienten der Kohorte erhalten möchten. Die verfügbaren Daten sind durch Module des Kerndatensatzes (KDS) deutschlandweit standardisiert. Sie können Datenpunkte zusätzlich filtern, wenn z.B. nur bestimmte Laborwerte von Interesse sind und Sie haben die Möglichkeit anzugeben, welche Datenpunkte zwingend erforderlich sind für Ihre Forschungsfrage.",
     "DATASELECTION": "Merkmalselektion",
     "SELECTION_BOX":{
       "FIELDS_MISSING": "Wählen Sie mindestens ein Feld für die Selektion durch Verwendung der Stifttaste in der oberen rechten Ecke dieser Box.",
@@ -139,7 +139,7 @@
     },
     "EDIT": {
       "HEADER": "Ausgewählte Merkmale",
-      "HEADER_DESCRIPTION":"Hier können Sie definieren, welche Merkmale von Patientinnen und Patienten der Kohorte für Ihre Forschungsfrage relevant sind. Achten Sie auf Datensparsamkeit und Kongruenz zur Beschreibung im Studienprotokoll / Ethikvotum / Forschungsantrag (insofern bereits vorhanden). Ändern Sie die Selektion durch Klick auf das Stiftsymbol und fügen Sie bei Bedarf weitere Filter (z.b. auf bestimmte Diagnosecodes) hinzu",
+      "HEADER_DESCRIPTION":"Hier können Sie definieren, welche Merkmale von Patientinnen und Patienten der Kohorte für Ihre Forschungsfrage relevant sind. Achten Sie auf Datensparsamkeit und Kongruenz zur Beschreibung im Studienprotokoll / Ethikvotum / Forschungsantrag (insofern bereits vorhanden). Ändern Sie die Selektion durch Klick auf das Stiftsymbol und fügen Sie bei Bedarf weitere Filter (z.B. auf bestimmte Diagnosecodes) hinzu.",
       "SECTION": "Ausgewählte Kriterien"
     },
     "BUTTON": {
@@ -268,7 +268,7 @@
     "HEADER_TITLE": "Ausgewählte Kriterien",
     "SEARCH": {
       "MIN_LENGTH":"Bitte mindestens drei Buchstaben eingeben",
-      "HEADER_INFO": "Definieren Sie Ihre Kohorte anhand von Kriterien die Sie über das Suchfeld auswählen können. Für gezieltes Suchen können Sie auf bestimmte Terminologien (z.b. ICD10, LOINC, OPS) oder KDS-Module einschränken. Sie können die Kohortenselektion direkt verwenden, um die Zahl von Patientinnen und Patienten deutschlandweit abzuschätzen.",
+      "HEADER_INFO": "Definieren Sie Ihre Kohorte anhand von Kriterien die Sie über das Suchfeld auswählen können. Für gezieltes Suchen können Sie auf bestimmte Terminologien (z.B. ICD10, LOINC, OPS) oder KDS-Module einschränken. Sie können die Kohortenselektion direkt verwenden, um die Zahl von Patientinnen und Patienten deutschlandweit abzuschätzen.",
       "SEARCH_BUTTON": "Suchen",
       "SEARCHBAR":"Suchen nach Begriff oder Terminologiecode",
       "HEADER": "Kriteriensuche",
